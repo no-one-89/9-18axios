@@ -23,3 +23,15 @@ function getJson(){
     });
 }
 export { getJson }
+
+function getBlog(aa){
+  let add = `https://raw.githubusercontent.com/no-one-89/demodata/master/blogs/${aa}.md`
+   return axios.get(add)
+    .then((res) => (
+    {data:res.data}
+  ))
+    .catch(function (error) {
+      alert(error);
+    });
+}
+export { getBlog }

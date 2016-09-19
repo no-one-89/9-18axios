@@ -7,8 +7,10 @@ class About extends React.Component {
     super();
     this.state={
       data:{},
-      wait:true,
-      inputValue:'username'
+      wait:false,
+      inputValue:'username',
+      init:'true'
+
     }
   }
   componentDidMount(){
@@ -18,6 +20,8 @@ class About extends React.Component {
     this.setState({inputValue:e.target.value})
   }
   handleClick(){
+    this.setState({init:false,wait:true})
+
     let name = this.state.inputValue;
     searchGit(name)
       .then((data) => {
@@ -30,7 +34,7 @@ class About extends React.Component {
   render () {
     let info = (
       <div>
-        Name:<p>{this.state.data.name}</p>
+        <p>{this.state.data.name}</p>
         <img src={this.state.data.avatar_url} />
       </div>
     )
@@ -38,7 +42,10 @@ class About extends React.Component {
       <div>
         <input type="text" value={this.state.inputValue} onChange={this.handleInput.bind(this)} />
         <button onClick={this.handleClick.bind(this)}>搜索</button> <br />
+        <span>  { this.state.init ? '请输入查询名称': null  }</span>
         { this.state.wait ? '正在拼命加载！' : info }
+
+
       </div>
     )
   }
