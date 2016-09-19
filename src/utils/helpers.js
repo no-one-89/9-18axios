@@ -11,3 +11,15 @@ function searchGit(name){
     });
 }
 export { searchGit }
+
+function getJson(){
+  let add = `https://raw.githubusercontent.com/no-one-89/demodata/master/card.json`
+   return axios.get(add)
+    .then((res) => (
+    {data:res.data}
+  ))
+    .catch(function (error) {
+      alert(error);
+    });
+}
+export { getJson }

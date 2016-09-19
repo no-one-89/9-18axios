@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import Card from './components/Card';
-
+import { getJson } from './utils/helpers'
 import Bg from './image/home1.jpg';
 
 let cardData = [
@@ -12,11 +12,27 @@ let cardData = [
 ]
 
 class Work extends React.Component {
+  constructor(){
+    super();
+    this.state={
+      data:[],
+      wait:true
+    }
+  }
+  componentDidMount(){
+    getJson(name)
+      .then((data) => {
+        this.setState({
+          data:data.data,
+          wait:false
+        })
+      })
+  }
   render () {
     return(
       <div className="container-fluid">
         <div className="row" style={{marginTop:'20px'}}>
-          {cardData.map( (item,i) => <Card {...item} key={i} /> )}
+          {this.state.data.map( (item,i) => <Card {...item} key={i} /> )}
         </div>
       </div>
     )

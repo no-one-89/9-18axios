@@ -30,7 +30,7 @@ class About extends React.Component {
   render () {
     let info = (
       <div>
-        <p>{this.state.data.name}</p>
+        Name:<p>{this.state.data.name}</p>
         <img src={this.state.data.avatar_url} />
       </div>
     )
