@@ -43,3 +43,8 @@ render () {
 }
 ```
 <p class='par'>这是一个加了样式的段落</p>
+
+| Header One     | Header Two     | Header Three |
+| :------------- | :------------- | :----------- |
+| Item One       | Item Two       | Item ooo |
+| isad | 124 |  is8 |

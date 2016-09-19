@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { getBlog } from './utils/helpers'
 import marked from 'marked';
+import hljs from 'highlight.js';
 
 class Blog extends React.Component {
   constructor(){
@@ -22,7 +23,11 @@ class Blog extends React.Component {
   }
   render () {
     let content = this.state.wait ? '请稍等' : marked(this.state.data)
-
+    marked.setOptions({
+    highlight: function (code) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
     return(
       <div>
         <div dangerouslySetInnerHTML={{__html: content}} />
